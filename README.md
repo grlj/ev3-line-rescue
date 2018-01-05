@@ -1,11 +1,11 @@
 # RoboCup2018_LineRescue
 
-GIT INTEGRATION FOR SUBLIME:
+GIT integration for SublimeText (open source):
 - https://github.com/SublimeGit/SublimeGit/
 - https://sublimegit.readthedocs.io/en/latest/
 
-OTHER LINERESCUE GITS:
+Other LineRescue gits:
 - https://github.com/Omega3395/OmegaTeam
 
-LINERESCUE OFICIAL FORUMS:
+LineRescue official forum:
 - https://junior.forum.robocup.org/c/robocupjunior-rescue/robocupjunior-rescue-line

@@ -2,6 +2,7 @@
 
 GIT INTEGRATION FOR SUBLIME:
 https://github.com/SublimeGit/SublimeGit/
+https://sublimegit.readthedocs.io/en/latest/
 
 OTHER LINERESCUE GITS:
 https://github.com/Omega3395/OmegaTeam

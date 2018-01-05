@@ -1,2 +1,10 @@
 # RoboCup2018_LineRescue
-Ment for sharing the code for RoboBum2018 and RoboCup2018 within our team.
+
+GIT INTEGRATION FOR SUBLIME:
+https://github.com/SublimeGit/SublimeGit/
+
+OTHER LINERESCUE GITS:
+https://github.com/Omega3395/OmegaTeam
+
+LINERESCUE OFICIAL FORUMS:
+https://junior.forum.robocup.org/c/robocupjunior-rescue/robocupjunior-rescue-line

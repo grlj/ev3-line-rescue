@@ -1,7 +1,7 @@
 # RoboCup2018_LineRescue
 
 GIT integration for SublimeText (open source):
-https://packagecontrol.io/packages/Github%20Tools
+- https://packagecontrol.io/packages/Github%20Tools
 
 Other LineRescue gits:
 - https://github.com/Omega3395/OmegaTeam

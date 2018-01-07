@@ -2,7 +2,7 @@
 
 GIT integration for SublimeText (open source):
 - https://sublimegit.readthedocs.io/en/latest/ (requires django, supposedly better)
-- https://github.com/bgreenlee/sublime-github (first google result)
+- https://github.com/bgreenlee/sublime-github (also requires GIT plugin)
 
 Other LineRescue gits:
 - https://github.com/Omega3395/OmegaTeam

@@ -9,3 +9,7 @@ Other LineRescue gits:
 
 LineRescue official forum:
 - https://junior.forum.robocup.org/c/robocupjunior-rescue/robocupjunior-rescue-line
+
+dfggdfdfdsssdtdgdsgfdsgsdfgr
+
+Jest bo začel ful za slovenščino delat.

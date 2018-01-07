@@ -1,15 +1,10 @@
 # RoboCup2018_LineRescue
 
 GIT integration for SublimeText (open source):
-- https://sublimegit.readthedocs.io/en/latest/ (requires django, supposedly better)
-- https://github.com/bgreenlee/sublime-github (also requires GIT plugin)
+https://packagecontrol.io/packages/Github%20Tools
 
 Other LineRescue gits:
 - https://github.com/Omega3395/OmegaTeam
 
 LineRescue official forum:
 - https://junior.forum.robocup.org/c/robocupjunior-rescue/robocupjunior-rescue-line
-
-dfggdfdfdsssdtdgdsgfdsgsdfgr
-
-Jest bo začel ful za slovenščino delat.

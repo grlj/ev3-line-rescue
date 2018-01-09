@@ -1,6 +1,6 @@
 from util.bubblewrap import bubblewrap
 from lib.statemachine import StateMachine
-from states.lstripletlinefollowingstate import LineFollowingState
+from states.linefollowingstate import LineFollowingState
 
 
 def test():

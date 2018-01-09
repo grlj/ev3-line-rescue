@@ -11,3 +11,5 @@ LineRescue official forum:
 
 Ev3dev documentation:
 - http://python-ev3dev.readthedocs.io/en/stable/
+
+Gašper pa ne zna uporabljati gita, haha!

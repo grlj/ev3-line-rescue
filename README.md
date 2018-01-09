@@ -1,4 +1,4 @@
-# RoboCup2018_LineRescue
+# Ev3LineRescue
 
 GIT integration for SublimeText (open source):
 - https://packagecontrol.io/packages/Github%20Tools
@@ -8,3 +8,6 @@ Other LineRescue gits:
 
 LineRescue official forum:
 - https://junior.forum.robocup.org/c/robocupjunior-rescue/robocupjunior-rescue-line
+
+Ev3dev documentation:
+- http://python-ev3dev.readthedocs.io/en/stable/

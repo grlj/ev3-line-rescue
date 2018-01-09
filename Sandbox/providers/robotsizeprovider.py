@@ -11,3 +11,4 @@ def distance_to_motor_rot(d): # d in cm
 
 def deg_to_motorpair_deg(fi): # fi in deg motors rotating in opposite direction
 	return (AXLE_LENGHT/WHEEL_RADIUS)/(fi*4)
+	

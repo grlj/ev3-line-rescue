@@ -8,3 +8,7 @@ Other LineRescue gits:
 
 LineRescue official forum:
 - https://junior.forum.robocup.org/c/robocupjunior-rescue/robocupjunior-rescue-line
+
+Ev3dev documentation:
+- http://python-ev3dev.readthedocs.io/en/stable/
+- 

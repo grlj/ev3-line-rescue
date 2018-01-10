@@ -3,7 +3,7 @@ from providers.motorpairprovider import motor_pair as mp
 from providers.linesensortripletprovider import line_sensors
 ls, ms, rs = line_sensors
 
-import states.sharpturnstate
+import states.sharpturnstate # fixes circular import issues
 
 SPEED = 200
 THRESHOLD = 50
@@ -13,7 +13,7 @@ class LineFollowingState(MachineState):
         while True:
             state = tuple([(0, 1)[r.value() < THRESHOLD] for r in (ls, ms, rs)])
 
-            if state == (0, 1, 0):
+            if   state == (0, 1, 0):
                 mp.set_speed(SPEED)
             elif state == (1, 0, 0):
                 mp.set_speed(SPEED / 2, -SPEED / 2)

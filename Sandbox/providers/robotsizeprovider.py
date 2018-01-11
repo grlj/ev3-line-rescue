@@ -2,7 +2,7 @@ from math import pi
 
 #all units in cm
 WHEEL_RADIUS = 2.8
-AXLE_LENGHT = 11.8
+AXLE_LENGHT = 15.0
 SENSOR_TO_SENSOR = 2.5
 SENSOR_TO_AXLE = 5.7
 

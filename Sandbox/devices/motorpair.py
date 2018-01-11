@@ -10,13 +10,6 @@ class MotorPair:
         self.left.run_forever(speed_sp=forward + turning)
         self.right.run_forever(speed_sp=forward - turning)
 
-    def run_to_rel_pos(self, forward, turning=0, pos=0): #run to left motor rot relative to current pos
-        start_pos = self.left.position
-        self.set_speed(forward, turning)
-        while abs(self.left.position - start_pos) < pos:
-            pass
-        self.stop()
-
     def stop(self): #stop motorpair
         self.set_speed(0)
         self.left.run_to_rel_pos(position_sp=0, speed_sp=100)

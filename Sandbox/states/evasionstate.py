@@ -6,26 +6,35 @@ from lib.machinestate import MachineState
 
 THRESHOLD = 10
 SPEED = 200
-RIGHT_ANGLE = 90
-FOWARD_MOVEMENT_PARAREL = 10
-FOWARD_MOVEMENT_PERPENDICULAR = 10
+RIGHT_ANGLE = 90 #in deg
+FOWARD_MOVEMENT_PERPENDICULAR = 10 #in cm
+FOWARD_MOVEMENT_PARALLEL = 10 #in cm
 
 class EvasionState(MachineState):
 	def run(self):
-		while 1:
-			if FDM.value() < THRESHOLD:
+		while True:
+			if fdm.value() < THRESHOLD:
 				mp.stop()
-				mp.run_to_rel_pos(0, SPEED, detmd(RIGHT_ANGLE))
-				mp.stop()
-				mp.run_to_rel_pos(SPEED, 0, ditmr(FOWARD_MOVEMENT_PARAREL))
-				mp.stop()
-				mp.run_to_rel_pos(0, SPEED, -detmd(RIGHT_ANGLE))
-				mp.stop()
-				mp.run_to_rel_pos(SPEED, 0, ditmr(FOWARD_MOVEMENT_PERPENDICULAR))
-				mp.stop()
-				mp.run_to_rel_pos(0, SPEED, -detmd(RIGHT_ANGLE))
-				mp.stop()
-				mp.run_to_rel_pos(SPEED, 0, ditmr(FOWARD_MOVEMENT_PARAREL))
-				mp.stop()
-				mp.run_to_rel_pos(0, SPEED, detmd(RIGHT_ANGLE))
-				mp.stop()
+				mp.block()
+        		mp.reset()
+				mp.run_to_lr(-detmd(RIGHT_ANGLE), detmd(RIGHT_ANGLE), SPEED)
+				mp.block()
+        		mp.reset()
+				mp.run_to_lr(ditmr(FOWARD_MOVEMENT_PERPENDICULAR), ditmr(FOWARD_MOVEMENT_PERPENDICULAR), SPEED)
+				mp.block()
+        		mp.reset()
+				mp.run_to_lr(detmd(RIGHT_ANGLE), -detmd(RIGHT_ANGLE), SPEED)
+				mp.block()
+        		mp.reset()
+				mp.run_to_lr(ditmr(FOWARD_MOVEMENT_PARALLEL), ditmr(FOWARD_MOVEMENT_PARALLEL), SPEED)
+				mp.block()
+				mp.reset()
+				mp.run_to_lr(ditmr(FOWARD_MOVEMENT_PARALLEL), ditmr(FOWARD_MOVEMENT_PARALLEL), SPEED)
+				mp.block()
+				mp.reset()
+				mp.run_to_lr(ditmr(FOWARD_MOVEMENT_PERPENDICULAR), ditmr(FOWARD_MOVEMENT_PERPENDICULAR), SPEED)
+				mp.block()
+        		mp.reset()
+				mp.run_to_lr(-detmd(RIGHT_ANGLE), detmd(RIGHT_ANGLE), SPEED)
+				mp.block()
+        		mp.reset()

@@ -30,6 +30,6 @@ class MotorPair:
     def running(self):
         return 'running' in self.left.state + self.right.state
 
-    def reset(self): #reset motor state
+    def reset(self): #reset motorpair rot count
         self.left.reset()
         self.right.reset()

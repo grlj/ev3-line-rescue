@@ -19,12 +19,26 @@ def message(*lines):
     screen.update()
 
 
+def set_led_color(color):
+    if color == 'none':
+        Leds().all_off()
+    else:
+        d = {
+            'red': Leds.RED,
+            'green': Leds.GREEN,
+            'orange': Leds.ORANGE,
+            'amber': Leds.AMBER,
+            'yellow': Leds.YELLOW
+        }
+        Leds().set_color(Leds.LEFT, d[color])
+        Leds().set_color(Leds.RIGHT, d[color])
+
+
 def display_bool(v):
     if v:
-        Leds().set_color(Leds.LEFT, Leds.GREEN)
-        Leds().set_color(Leds.RIGHT, Leds.GREEN)
+        set_led_color('green')
     else:
-        Leds().all_off()
+        set_led_color('none')
 
 
 def stop_motors():

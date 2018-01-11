@@ -1,3 +1,4 @@
+from util.robotutils import wait_until, set_led_color
 #from util.robotutils import wait_until
 from components.linecentering import line_centering as lc
 from lib.machinestate import MachineState
@@ -6,7 +7,7 @@ from providers.linesensortripletprovider import line_sensors
 from providers.robotsizeprovider import distance_to_motor_rot as dtr, deg_to_motorpair_deg as detmd, SENSOR_TO_SENSOR, SENSOR_TO_AXLE
 ls, ms, rs = line_sensors
 
-import states.linefollowingstate # fixes circular import issues
+import states.linefollowingstate  # fixes circular import issues
 
 SPEED = 160
 THRESHOLD = 50
@@ -17,6 +18,8 @@ class SharpTurnState(MachineState):
         self.turn = turn
 
     def run(self):
+        set_led_color('amber')
+
         mp.reset()
         lc()
         mp.reset()

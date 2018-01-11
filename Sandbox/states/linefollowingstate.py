@@ -1,5 +1,6 @@
 from lib.machinestate import MachineState
 from providers.motorpairprovider import motor_pair as mp
+from util.robotutils import set_led_color
 from providers.linesensortripletprovider import line_sensors
 ls, ms, rs = line_sensors
 
@@ -11,6 +12,8 @@ STEERING = 0.7
 
 class LineFollowingState(MachineState):
     def run(self):
+        set_led_color('green')
+
         state = (0, 1, 0)
 
         while True:
@@ -29,3 +32,4 @@ class LineFollowingState(MachineState):
                 return states.sharpturnstate.SharpTurnState(-1)
             elif state == (0, 1, 1):
                 return states.sharpturnstate.SharpTurnState(+1)
+

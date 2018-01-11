@@ -7,6 +7,6 @@ from lib.measurements import hooked_sensor_class
 Sensor = CS
 
 # comment in production
-Sensor = hooked_sensor_class(CS)
+# Sensor = hooked_sensor_class(CS) measurments
 
 line_sensors = tuple(provide_ev3_devices(Sensor, count=3, user='line sensor triplet'))

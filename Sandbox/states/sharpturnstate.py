@@ -1,4 +1,5 @@
 #from util.robotutils import wait_until
+from components.linecentering import line_centering as lc
 from lib.machinestate import MachineState
 from providers.motorpairprovider import motor_pair as mp
 from providers.linesensortripletprovider import line_sensors
@@ -16,21 +17,18 @@ class SharpTurnState(MachineState):
         self.turn = turn
 
     def run(self):
-        print("gsfdssd")
         mp.reset()
         mp.run_to_lr(dtr(SENSOR_TO_AXLE), dtr(SENSOR_TO_AXLE), SPEED)
         mp.block()
         #mp.set_speed(-SPEED, self.turn * SPEED)
-        #wait_until(lambda: ms.value() < THRESHOLD)
+        #wait_until(lambda: ms.value() < 70)
         #mp.stop()
-        mp.reset()
-        print("iadfuudfsailuasf")
-        print(str(detmd(RIGHT_ANGLE)))
+        #mp.reset()
         mp.run_to_lr(self.turn*detmd(RIGHT_ANGLE), -self.turn*detmd(RIGHT_ANGLE), SPEED)
         mp.block()
         mp.reset()
-
-        print("eztzerr")
-        mp.run_to_lr(dtr(SENSOR_TO_SENSOR), dtr(SENSOR_TO_SENSOR), SPEED)
+        #mp.run_to_lr(dtr(SENSOR_TO_SENSOR), dtr(SENSOR_TO_SENSOR), SPEED)
+        #mp.block()
+        lc()
         mp.block()
         return states.linefollowingstate.LineFollowingState()

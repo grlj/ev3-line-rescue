@@ -8,7 +8,7 @@ SPEED = 200
 THRESHOLD = 70
 STEERING = 1
 
-def LineCentering():
+def line_centering():
     state = tuple([(0, 1)[r.value() < THRESHOLD] for r in (ls, ms, rs)])
 
     if state != (0, 1, 0):     

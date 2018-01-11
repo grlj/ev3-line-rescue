@@ -1,6 +1,5 @@
 from providers.distancemeterproviders import front_distance_meter as fdm
-from providers.robotsizeprovider import distance_to_motor_rot as ditmr
-from providers.robotsizeprovider import deg_to_motorpair_deg as detmd 
+from providers.robotsizeprovider import distance_to_motor_rot as dtmr 
 from providers.motorpairprovider import motor_pair as mp
 from lib.machinestate import MachineState
 
@@ -16,16 +15,16 @@ class EvasionState(MachineState):
 			if fdm.value() < THRESHOLD:
 				mp.stop()
 				mp.block()
-        		mp.reset()
+        mp.reset()
 				mp.run_to_lr(-detmd(RIGHT_ANGLE), detmd(RIGHT_ANGLE), SPEED)
 				mp.block()
-        		mp.reset()
+        mp.reset()
 				mp.run_to_lr(ditmr(FOWARD_MOVEMENT_PERPENDICULAR), ditmr(FOWARD_MOVEMENT_PERPENDICULAR), SPEED)
 				mp.block()
-        		mp.reset()
+        mp.reset()
 				mp.run_to_lr(detmd(RIGHT_ANGLE), -detmd(RIGHT_ANGLE), SPEED)
 				mp.block()
-        		mp.reset()
+        mp.reset()
 				mp.run_to_lr(ditmr(FOWARD_MOVEMENT_PARALLEL), ditmr(FOWARD_MOVEMENT_PARALLEL), SPEED)
 				mp.block()
 				mp.reset()
@@ -34,7 +33,7 @@ class EvasionState(MachineState):
 				mp.reset()
 				mp.run_to_lr(ditmr(FOWARD_MOVEMENT_PERPENDICULAR), ditmr(FOWARD_MOVEMENT_PERPENDICULAR), SPEED)
 				mp.block()
-        		mp.reset()
+        mp.reset()
 				mp.run_to_lr(-detmd(RIGHT_ANGLE), detmd(RIGHT_ANGLE), SPEED)
 				mp.block()
-        		mp.reset()
+        mp.reset()

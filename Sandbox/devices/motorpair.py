@@ -6,16 +6,17 @@ class MotorPair:
         self.left = left
         self.right = right
 
-    def set_speed(self, forward, turning=0): #run at set speed or turn with both motors
+    def set_speed(self, forward, turning=0): #run at set speed or turn with both motors 
         self.left.run_forever(speed_sp=forward + turning)
         self.right.run_forever(speed_sp=forward - turning)
 
-    def stop(self): #stop motorpair
+
+    def stop(self): #stop motorpair 
         self.set_speed(0)
         self.left.run_to_rel_pos(position_sp=0, speed_sp=100)
         self.right.run_to_rel_pos(position_sp=0, speed_sp=100)
 
-    def run_to_lr(self, left, right, speed): #run untill both motors simultaneously reach set motor rot
+    def run_to_lr(self, left, right, speed): #run untill both motors simultaneously reach set motor rot 
         lrel = abs(left - self.left.position)
         rrel = abs(right - self.right.position)
         left_speed = speed if lrel >= rrel else speed * (lrel / rrel)
@@ -30,6 +31,6 @@ class MotorPair:
     def running(self):
         return 'running' in self.left.state + self.right.state
 
-    def reset(self): #reset motor state
+    def reset(self): #reset motorpair rot count
         self.left.reset()
         self.right.reset()

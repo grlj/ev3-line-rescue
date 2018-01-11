@@ -2,13 +2,16 @@ from lib.machinestate import MachineState
 from providers.motorpairprovider import motor_pair as mp
 from util.robotutils import set_led_color
 from providers.linesensortripletprovider import line_sensors
+from providers.distancemeterprovider import front_distance_meter as fdm
 ls, ms, rs = line_sensors
 
 import states.sharpturnstate # fixes circular import issues
+import states.evasionstate # fixes circular import issues
 
 SPEED = 200
 THRESHOLD = 50
 STEERING = 0.7
+DISTANCE_THRESHOLD = 70
 
 class LineFollowingState(MachineState):
     def run(self):
@@ -32,4 +35,5 @@ class LineFollowingState(MachineState):
                 return states.sharpturnstate.SharpTurnState(-1)
             elif state == (0, 1, 1):
                 return states.sharpturnstate.SharpTurnState(+1)
-
+            if fdm.value() < DISTANCE_THRESHOLD:
+                return states.evasionstate.EvasionState()

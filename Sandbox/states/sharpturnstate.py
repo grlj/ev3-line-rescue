@@ -36,6 +36,6 @@ class SharpTurnState(MachineState):
         mp.block()
         lc()
         mp.block()
-        mp.run_to_lr(-dtr(1.5), -dtr(1.5), SPEED)
+        mp.run_to_lr(-dtr(0.5), -dtr(0.5), SPEED)
         mp.block()
         return states.linefollowingstate.LineFollowingState()

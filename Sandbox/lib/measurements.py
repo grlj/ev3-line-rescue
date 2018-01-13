@@ -1,4 +1,3 @@
-from ev3dev.ev3 import ColorSensor as CS
 from time import time
 
 measurements = {}

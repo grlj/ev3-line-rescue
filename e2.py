@@ -1,11 +1,9 @@
-from manoeuvres.centralizefront import centralizeFront as cf
-from devices import driver, lineSensorArray
+from manoeuvres.centralizefront import centralize_front as cf, fine_centralize as fc, skipping as sk
+from devices import driver as d, line_sensor_array as lsa
 
-d = driver
-lsa = lineSensorArray
 
 def s():
-	driver.stop()
+	d.stop()
 
 def log():
-	print(lineSensorArray.values(), lineSensorArray.line_pos)
+	print(lsa.values(), lsa.line_pos)

@@ -1,7 +1,8 @@
 from math import pi
+from robotspecs import robot_specs as rs
 
-def distance_to_motor(distance, wheel_radius):
-	return (distance/wheel_radius)*(180/pi)
+def distance_to_motor(distance):
+	return (distance/rs['wheel radius'])*(180/pi)
 
-def motor_to_distance(motor_value, wheel_radius):
-	return motor_value * wheel_radius * pi / 180
+def motor_to_distance(motor_pos):
+	return motor_pos * rs['wheel radius'] * pi / 180

@@ -26,6 +26,11 @@ class MotorPair:
         self.left.run_to_abs_pos(position_sp=left, speed_sp=left_speed)
         self.right.run_to_abs_pos(position_sp=right, speed_sp=right_speed)
 
+    @property
+    def position(self):
+        return self.left.position, self.right.position
+
+
     def block(self):
         while self.running():
             pass
@@ -36,3 +41,18 @@ class MotorPair:
     def reset(self):
         self.left.reset()
         self.right.reset()
+
+    @property
+    def stop_action(self):
+        return self.left.stop_action
+
+    @stop_action.setter
+    def stop_action(self, value):
+        self.left.stop_action = value
+        self.right.stop_action = value
+
+    def skip(self, speed=100):
+        if (speed > 0):
+            self.left.run_to_rel_pos(position_sp=1, speed_sp=speed)
+        else:
+            self.left.run_to_rel_pos(position_sp=-1, speed_sp=speed)

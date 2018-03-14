@@ -5,5 +5,5 @@ robot_specs = { # [cm]
 	       'line sensor y': 3.5,
 	      'color sensor y': 8.0,
 	    'distance meter y': 7.4,
-	       'circumference': 40.8
+	       'circumference': 40.8,
 }

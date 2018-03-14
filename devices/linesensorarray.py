@@ -14,8 +14,3 @@ class LineSensorArray(Sensor):
 			return vals[::-1]
 
 		return vals
-
-	@property
-	def line_pos(self):
-		values = self.values()
-		return (-3, -2, -1, 0, 0, 1, 2, 3)[values.index(max(values))]

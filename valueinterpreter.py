@@ -13,12 +13,12 @@ class ValueInterpreter:
 		for i in range(len(values)):
 			if values[i] > THRESHOLD:
 				self.over_max += 1
+				if i in [0, 1]:
+					self.over_max_left += 1
+				elif i in [6, 7]:
+					self.over_max_right += 1
 			elif values[i] < MIN_TRESHOLD:
 				self.under_min += 1
-			if i in [0, 1]:
-				self.over_max_left += 1
-			elif i in [6, 7]:
-				self.over_max_right += 1
 
 	@property
 	def peak_pos(self):

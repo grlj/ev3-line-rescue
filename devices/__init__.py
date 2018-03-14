@@ -1,4 +1,4 @@
-from ev3dev.ev3 import ColorSensor
+from ev3dev.ev3 import ColorSensor, Motor
 from .driver import Driver
 from .linesensorarray import LineSensorArray
 

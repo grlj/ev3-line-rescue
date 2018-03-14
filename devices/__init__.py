@@ -4,6 +4,6 @@ from .linesensorarray import LineSensorArray
 
 
 driver             = Driver('outA', 'outB')
-lineSensorArray    = LineSensorArray('in1', inverted=True)
+lineSensorArray    = LineSensorArray('in1')
 colorSensors       = (ColorSensor('mux1'), ColorSensor('mux2'))
 centralLineSensor  = LightSensor('mux3')

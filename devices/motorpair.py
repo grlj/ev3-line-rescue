@@ -54,5 +54,7 @@ class MotorPair:
     def skip(self, speed=100):
         if (speed > 0):
             self.left.run_to_rel_pos(position_sp=1, speed_sp=speed)
+            self.right.run_to_rel_pos(position_sp=-1, speed_sp=speed)
         else:
             self.left.run_to_rel_pos(position_sp=-1, speed_sp=speed)
+            self.right.run_to_rel_pos(position_sp=1, speed_sp=speed)

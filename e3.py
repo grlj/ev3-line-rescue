@@ -1,5 +1,5 @@
 from devices import driver
-from devices import lineSensorArray as lsa
+from devices import line_sensor_array as lsa
 from valueinterpreter import value_interpreter
 from robotspecs import robot_specs as rs
 

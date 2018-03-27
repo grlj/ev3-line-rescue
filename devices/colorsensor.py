@@ -5,15 +5,12 @@ class ColorSensor(ColorSensor):
 	def __init__(self, port):
 		super(ColorSensor, self).__init__(port)
 
-	def color_value(self):
-			self.mode = "COL-COLOR"
-			return self.value()
-
 	def calibrate(self):
-		self.green = self.color_value()
+		self.green = self.raw
 
 	def is_green(self):
-		if self.value() == self.green:
+		current_value = self.raw
+		if [abs(x - y) < 10 for x, y in zip(self.green, current_value)] == [True, True, True]:
 			return True
 		else:
 			return False

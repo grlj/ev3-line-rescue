@@ -5,8 +5,8 @@ from .colorsensor import ColorSensor
 
 
 driver              = Driver('outA', 'outB')
-arm                 = Motor('outD')
-claws               = Motor('outC')
+arm                 = Motor('outC')
+claws               = Motor('outD')
 line_sensor_array   = LineSensorArray('in1')
-color_sensors       = (ColorSensor('mux3'), ColorSensor('mux1'))
-central_line_sensor = LightSensor('mux2')
+color_sensors       = (ColorSensor('in2'), ColorSensor('in3'))
+# central_line_sensor = ColorSensor('in4')

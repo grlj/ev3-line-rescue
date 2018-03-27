@@ -15,21 +15,21 @@ def line_follow():
 		direction = 1
 		index = value.index(max(value))
 		value_interpreter.push(values=value)
-		#detected_green = tuple([i.is_green() for i in cs])
+		detected_green = [i.is_green() for i in cs]
 
 		if index in [0, 1, 2]:
 			direction = -1
 		elif index in [5, 6, 7]:
 			index = 7 - index
 
-		# if detected_green[0] or detected_green[1]:
-		# 	driver.stop()
-		# 	driver.reset()
-		# 	driver.lr(0.5, 0.5, 0.5)
-		# 	driver.block()
-		# 	crossing()
+		if detected_green[0] or detected_green[1]:
+			driver.stop()
+			driver.reset()
+			driver.lr(0.5, 0.5, 0.5)
+			driver.block()
+			crossing()
 
-		if value_interpreter.under_min == 8:
+		elif value_interpreter.under_min == 8:
 			pass # no line detected
 			value = lsa.values()
 		elif value_interpreter.over_max > 2:

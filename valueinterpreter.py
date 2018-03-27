@@ -4,7 +4,7 @@ class ValueInterpreter:
 	raw = [-1, -1, -1, -1, -1, -1, -1, -1]
 
 	def push(self, values):
-		THRESHOLD = 90
+		THRESHOLD = 75
 		MIN_TRESHOLD = 25
 
 		self.raw = values
@@ -13,9 +13,9 @@ class ValueInterpreter:
 		for i in range(len(values)):
 			if values[i] > THRESHOLD:
 				self.over_max += 1
-				if i in [0, 1]:
+				if i in [0, 1, 2]:
 					self.over_max_left += 1
-				elif i in [6, 7]:
+				elif i in [5, 6, 7]:
 					self.over_max_right += 1
 			elif values[i] < MIN_TRESHOLD:
 				self.under_min += 1

@@ -12,19 +12,21 @@ class MotorPair:
     def set_speed(self, forward=0, turning=0):
         self.left.run_forever(speed_sp=forward + turning)
         self.right.run_forever(speed_sp=forward - turning)
+        return self
 
     def stop(self):
         self.set_speed(0)
         self.left.run_to_rel_pos(position_sp=0, speed_sp=100)
         self.right.run_to_rel_pos(position_sp=0, speed_sp=100)
+        return self
 
     def run_to_lr(self, left, right, speed):
-        lrel = abs(left - self.left.position)
-        rrel = abs(right - self.right.position)
-        left_speed = speed if lrel >= rrel else speed * (lrel / rrel)
-        right_speed = speed if rrel >= lrel else speed * (rrel / lrel)
-        self.left.run_to_abs_pos(position_sp=left, speed_sp=left_speed)
-        self.right.run_to_abs_pos(position_sp=right, speed_sp=right_speed)
+        left_speed = speed if left >= right else speed * (left / right)
+        right_speed = speed if right >= left else speed * (right / left)
+        self.left.run_to_rel_pos(position_sp=left, speed_sp=left_speed)
+        self.right.run_to_rel_pos(position_sp=right, speed_sp=right_speed)
+        self.wait()
+        return self
 
     @property
     def position(self):
@@ -34,6 +36,10 @@ class MotorPair:
     def block(self):
         while self.running():
             pass
+        return self
+
+    def wait(self):
+        return self.block()
 
     def running(self):
         return 'running' in self.left.state + self.right.state
@@ -41,6 +47,7 @@ class MotorPair:
     def reset(self):
         self.left.reset()
         self.right.reset()
+        return self
 
     @property
     def stop_action(self):
@@ -58,3 +65,4 @@ class MotorPair:
         else:
             self.left.run_to_rel_pos(position_sp=-1, speed_sp=speed)
             self.right.run_to_rel_pos(position_sp=1, speed_sp=speed)
+        return self

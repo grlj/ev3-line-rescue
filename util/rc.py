@@ -13,19 +13,22 @@ def stop_left():
 def stop_right():
 	d.right.stop()
 
-switch = False
+def run_backward():
+	d.left.run_forever(speed_sp=-600)
+	d.right.run_forever(speed_sp=-600)
 
-def toggle_switch():
-	global switch
+def stop_both():
 	d.stop()
-	d.reset()
-	switch = not switch
 
-def update():
-	m.update()
+def run():
+	try:
+		m.update_loop()
+	except KeyboardInterrupt:
+		d.stop()
 
 m.left_press = run_right
 m.left_release = stop_right
 m.right_press = run_left
 m.right_release = stop_left
-m.extra_press = toggle_switch
+m.extra_press = run_backward
+m.extra_release = stop_both

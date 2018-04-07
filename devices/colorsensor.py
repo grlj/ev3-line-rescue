@@ -12,8 +12,4 @@ class ColorSensor(ColorSensor):
 		self.Green = self.values()
 
 	def is_green(self):
-		current_value = self.values()
-		if [abs(x - y) < 30 for x, y in zip(self.Green, current_value)] == [True, True, True]:
-			return True
-		else:
-			return False
+		return False not in [abs(x - y) < 10 for x, y in zip(self.green, self.raw)]

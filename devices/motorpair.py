@@ -6,12 +6,16 @@ class MotorPair:
         self.right = Motor(right_motor_port)
 
     @property
-    def max_speed(self):
+    def max_ticks_per_second(self):
         return max(self.left.max_speed, self.right.max_speed)
 
+    @property
+    def max_speed(self):
+        return self.max_ticks_per_second
+
     def set_speed(self, forward=0, turning=0):
-        self.left.run_forever(speed_sp=forward + turning)
-        self.right.run_forever(speed_sp=forward - turning)
+        self.left.run_forever(speed_sp=bounded(forward + turning, self.max_ticks_per_second))
+        self.right.run_forever(speed_sp=bounded(forward - turning, self.max_ticks_per_second))
         return self
 
     def stop(self):
@@ -66,3 +70,6 @@ class MotorPair:
             self.left.run_to_rel_pos(position_sp=-1, speed_sp=speed)
             self.right.run_to_rel_pos(position_sp=1, speed_sp=speed)
         return self
+
+def bounded(x, max_abs):
+    return max(-max_abs, min(x, max_abs))

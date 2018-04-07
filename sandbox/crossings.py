@@ -5,6 +5,7 @@ SHARP_TURN = rs["circumference"]/8
 FORWARD_SPEED = 10
 TURNING_SPEED = 6
 THRESHOLD = 80
+FORWARD_DISTANCE = 1.5
 
 def crossing():
 	driver.stop()
@@ -27,12 +28,12 @@ def crossing():
 		if left > 8:
 			driver.lr(rs["color sensor y"], rs["color sensor y"], FORWARD_SPEED)
 			driver.lr(-SHARP_TURN, SHARP_TURN, TURNING_SPEED)
-			driver.lr(0.5, 0.5, FORWARD_SPEED)
+			driver.lr(FORWARD_DISTANCE, FORWARD_DISTANCE, FORWARD_SPEED)
 
 		elif right > 8:
 			driver.lr(rs["color sensor y"], rs["color sensor y"], FORWARD_SPEED)
 			driver.lr(SHARP_TURN, -SHARP_TURN, TURNING_SPEED)
-			driver.lr(0.5, 0.5, FORWARD_SPEED)
+			driver.lr(FORWARD_DISTANCE, FORWARD_DISTANCE, FORWARD_SPEED)
 
 		elif back > 8:
 			driver.lr(rs["color sensor y"], rs["color sensor y"], FORWARD_SPEED)
@@ -42,11 +43,11 @@ def crossing():
 		if left > 8:
 			driver.lr(rs["color sensor y"], rs["color sensor y"], FORWARD_SPEED)
 			driver.lr(-SHARP_TURN, SHARP_TURN, TURNING_SPEED)
-			driver.lr(0.5, 0.5, FORWARD_SPEED)
+			driver.lr(FORWARD_DISTANCE, FORWARD_DISTANCE, FORWARD_SPEED)
 
 
 	elif line_sensor_value[6] > THRESHOLD or line_sensor_value[7] > THRESHOLD:
 		if right > 8:
 			driver.lr(rs["color sensor y"], rs["color sensor y"], FORWARD_SPEED)
 			driver.lr(SHARP_TURN, -SHARP_TURN, TURNING_SPEED)
-			driver.lr(0.5, 0.5, FORWARD_SPEED)
+			driver.lr(FORWARD_DISTANCE, FORWARD_DISTANCE, FORWARD_SPEED)

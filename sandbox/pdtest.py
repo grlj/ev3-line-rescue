@@ -9,8 +9,8 @@ from sandbox.crossings import crossing as cross
 S = 4
 pd = PD(0.6, 3, 5)
 
-cs[0].Green = (161, 224, 112)
-cs[1].Green = (201, 260, 151)
+cs[0].Green = [161, 224, 112]
+cs[1].Green = [201, 260, 151]
 
 def main():
 	pd.reset()
@@ -22,7 +22,7 @@ def main():
 		ldp.push(raw)
 
 		if [i > 75 for i in raw].count(True) > 6:
-			d.lr(1, 1, 5)
+			d.lr(1.2, 1.2, 5)
 			pd.reset()
 
 		if detected_green[0] or detected_green[1]:

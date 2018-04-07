@@ -3,12 +3,14 @@ from components.linedataparser import line_data_parser as ldp
 from robotspecs import circumference
 from util.linedatamanipulation import error_from_vector
 from components.pdcontroller import PDController as PD
-from sandbox.devtools import rc, s, l, run_safe
+from sandbox.devtools import s, l, run_safe
 from sandbox.crossings import crossing as cross
 
 S = 4
 pd = PD(0.6, 3, 5)
 
+cs[0].Green = (161, 224, 112)
+cs[1].Green = (201, 260, 151)
 
 def main():
 	pd.reset()
@@ -18,6 +20,10 @@ def main():
 		detected_green = [i.is_green() for i in cs]
 		raw = lsa.values()
 		ldp.push(raw)
+
+		if [i > 75 for i in raw].count(True) > 6:
+			d.lr(1, 1, 5)
+			pd.reset()
 
 		if detected_green[0] or detected_green[1]:
 			cross()

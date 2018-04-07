@@ -2,8 +2,8 @@ from devices import line_sensor_array as lsa, driver as d
 from components.linedataparser import line_data_parser as ldp
 from util.logbitsets import log_bitsets
 from util.linedatamanipulation import active_bits
-from util.mouse import mouse as m
-from util.rc import run as rc
+# from util.mouse import mouse as m
+# from util.rc import run as rc
 
 def s():
 	d.stop()

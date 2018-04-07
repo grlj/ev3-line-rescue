@@ -5,11 +5,11 @@ class ColorSensor(ColorSensor):
 		super(ColorSensor, self).__init__(port)
 
 	def values(self):
-		return (self.value(i) for i in range(3))
+		return [self.value(i) for i in range(3)]
 
 	def calibrate(self):
 		self.mode = 'RGB-RAW'
 		self.Green = self.values()
 
 	def is_green(self):
-		return False not in [abs(x - y) < 10 for x, y in zip(self.green, self.raw)]
+		return False not in [abs(x - y) < 10 for x, y in zip(self.Green, self.raw)]

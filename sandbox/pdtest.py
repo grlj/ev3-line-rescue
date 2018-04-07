@@ -1,6 +1,7 @@
 from devices import line_sensor_array as lsa, driver as d
 from components.linedataparser import line_data_parser as ldp
 from robotspecs import circumference
+from util.linedatamanipulation import error_from_vector
 from components.pdcontroller import PDController as PD
 from sandbox.devtools import rc, s, l, run_safe
 
@@ -15,13 +16,16 @@ def main():
 
 	while 1:
 		rc.update()
-		if rc.switch:
+		if not rc.switch:
 			pd.reset()
 			continue
 
 		raw = lsa.values()
 		ldp.push(raw)
+
 		if (ldp.repeat_count):
+			if (ldp.repeat_count > 10):
+				print("SENZOR JE ODKSAOASFNFNGJJL<CSAmj")
 			continue
 		
 		pd.push((d.average_position, error_from_vector(raw)))

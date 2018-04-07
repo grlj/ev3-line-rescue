@@ -2,14 +2,17 @@ from devices import driver
 from devices import color_sensors as cs
 from robotspecs import robot_specs as rs
 
-SHARP_TURN = rs["circumference"]/4 - 0.7
+SHARP_TURN = rs["circumference"]/8
 FORWARD_SPEED = 10
 TURNING_SPEED = 6
 
 def crossing():
+	driver.stop()
+
 	right = 0
 	left = 0
 	back = 0
+
 	for i in range(10):
 		detected_green = [i.is_green() for i in cs] 
 		if detected_green == [True, True]:
@@ -18,7 +21,9 @@ def crossing():
 			left += 1
 		elif detected_green == [False, True]:
 			right += 1
+
 	print(left, right, back)
+
 	if left > 8:
 		driver.stop()
 		driver.reset()
@@ -29,6 +34,7 @@ def crossing():
 		driver.block()
 		driver.reset()
 		driver.lr(0.5, 0.5, FORWARD_SPEED)
+
 	elif right > 8:
 		driver.stop()
 		driver.reset()
@@ -39,6 +45,7 @@ def crossing():
 		driver.block()
 		driver.reset()
 		driver.lr(0.5, 0.5, FORWARD_SPEED)
+
 	elif back > 8:
 		driver.stop()
 		driver.reset()

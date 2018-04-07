@@ -1,7 +1,6 @@
 from ev3dev.ev3 import ColorSensor
 
 class ColorSensor(ColorSensor):
-	green = 2
 	def __init__(self, port):
 		super(ColorSensor, self).__init__(port)
 

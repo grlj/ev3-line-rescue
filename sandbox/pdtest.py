@@ -15,10 +15,6 @@ def main():
 	d.reset()
 
 	while 1:
-		rc.update()
-		if not rc.switch:
-			pd.reset()
-			continue
 
 		raw = lsa.values()
 		ldp.push(raw)
@@ -36,5 +32,5 @@ def main():
 def m1(w):
 	return d.lr(w * circumference / 4, -w * circumference / 4, 6).lr(2, 2, 6)
 
-
-run_safe(main)
+def t():
+	run_safe(main)

@@ -9,8 +9,4 @@ class ColorSensor(ColorSensor):
 		self.green = self.raw
 
 	def is_green(self):
-		current_value = self.raw
-		if [abs(x - y) < 10 for x, y in zip(self.green, current_value)] == [True, True, True]:
-			return True
-		else:
-			return False
+		return False not in [abs(x - y) < 10 for x, y in zip(self.green, self.raw)]

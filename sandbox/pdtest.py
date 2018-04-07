@@ -1,45 +1,33 @@
 from devices import line_sensor_array as lsa, driver as d
-from linedatainterpreter import line_data_interpreter as ldi
-from logbitsets import log_bitsets
-from linedatamanipulation import active_bits
+from components.linedataparser import line_data_parser as ldp
 from robotspecs import circumference
-from pdcontroller import PDController as PD
+from components.pdcontroller import PDController as PD
+from sandbox.devtools import rc, s, l, run_safe
 
 
+S = 4
 pd = PD(0.6, 3, 5)
-
-def s():
-	d.stop()
-
-
-def a():
-	ldi.push(lsa.values())
-	log()	
-
-
-def log():
-	log_bitsets({'*':active_bits(ldi.raw), '+':ldi.line_bitset, '@':ldi.origin, 'P':ldi.peak})
 
 
 def error_from_vector(vector):
+	if sum(vector) == 0:
+		return 0
 	return sum([vector[i] * i for i in range(8)]) / sum(vector) - 3.5
 
-def t():
-	try:
-		c()
-	except KeyboardInterrupt:
-		s()
 
-S = 4
-l1 = True
-def c():
+def main():
 	pd.reset()
 	d.reset()
 
 	while 1:
+		rc.update()
+		if rc.switch:
+			pd.reset()
+			continue
+
 		raw = lsa.values()
-		ldi.push(raw)
-		if (ldi.repeat_count):
+		ldp.push(raw)
+		if (ldp.repeat_count):
 			continue
 		# log()
 		pd.push((d.average_position, error_from_vector(raw)))
@@ -47,7 +35,7 @@ def c():
 
 		d.set_speed(S, S * pd.value)
 
-		# sc = ldi.split_count(ldi.origin_pos)
+		# sc = ldp.split_count(ldp.origin_pos)
 		# w = sc[1] - sc[0]
 
 		# if abs(w) > 2:
@@ -70,3 +58,6 @@ def c():
 
 def m1(w):
 	return d.lr(w * circumference / 4, -w * circumference / 4, 6).lr(2, 2, 6)
+
+
+run_safe(main)

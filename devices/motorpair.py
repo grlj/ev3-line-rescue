@@ -29,7 +29,6 @@ class MotorPair:
         right_speed = speed if right >= left else speed * (right / left)
         self.left.run_to_rel_pos(position_sp=left, speed_sp=left_speed)
         self.right.run_to_rel_pos(position_sp=right, speed_sp=right_speed)
-        self.wait()
         return self
 
     @property

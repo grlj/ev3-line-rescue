@@ -22,7 +22,9 @@ class Driver(MotorPair):
         return super().run_to_lr(dtm(left), dtm(right), dtm(speed))
 
     def lr(self, left, right, speed):
-        return self.run_to_lr(left, right, speed)        
+        self.run_to_lr(left, right, speed)
+        self.wait()
+        return
 
     @property
     def position(self):

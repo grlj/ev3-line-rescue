@@ -1,5 +1,5 @@
 from devices import driver
-from robotospecs import robot_specs as rs
+from robotspecs import robot_specs as rs
 
 FORWARD_SPEED = 6
 TURNING_SPEED = 3

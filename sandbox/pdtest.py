@@ -1,42 +1,50 @@
-from devices import line_sensor_array as lsa, driver as d, color_sensors as cs
+from devices import line_sensor_array as lsa, driver as d, color_sensors as cs, ultrasonic_sensor as us
 from components.linedataparser import line_data_parser as ldp
 from robotspecs import circumference
 from util.linedatamanipulation import error_from_vector
 from components.pdcontroller import PDController as PD
-from sandbox.devtools import s, l, run_safe
-from sandbox.crossings import crossing as cross, scan_lr
+from Sandbox.devtools import s, l, run_safe
+from Sandbox.crossings import crossing as cross, scan_lr
+from time import sleep
+from Sandbox.evasion_manouver import evade
 
 S = 4
-pd = PD(0.6, 3, 3)
+pd = PD(0.35, 3, 3)
 
 cs[0].Green = [147, 212, 96]
 cs[1].Green = [179, 228, 125]
 
 
 def main():
+
+	us.mode = "US-DIST-CM"
+	c = 0
 	pd.reset()
 	d.reset()
 
 	while 1:
-		cs_value = [i.values() for i in cs]
-		#detected_green = [i.is_green() for i in cs]
-		detected_green = [False not in [abs(x - y) < 30 for x, y in zip(cs[i].Green, cs_value[i])] for i in range(2)]
-		green_component_detected = [abs(cs_value[i][1] - cs[i].Green[1]) < 20 for i in range(2)]
+		sleep(0.0001)
+		if c%5 == 0:
+			if us.value() < 50:
+				evade()
+				pd.reset()
+			cs_value = [i.values() for i in cs]
+			detected_green = [False not in [abs(x - y) < 30 for x, y in zip(cs[i].Green, cs_value[i])] for i in range(2)]
+			if detected_green[0] or detected_green[1]:
+				print("crossing")
+				cross()
+				pd.reset()
+				d.reset()
+		c+=1
+		# detected_green = [i.is_green() for i in cs]
+		# green_component_detected = [abs(cs_value[i][1] - cs[i].Green[1]) < 20 for i in range(2)]
 		raw = lsa.values()
 		ldp.push(raw)
 
-		if [i > 75 for i in raw].count(True) > 6:
-			d.lr(1.2, 1.2, 5)
-			pd.reset()
-			d.reset()
-
-
-		if detected_green[0] or detected_green[1]:
-			print("crossing")
-			cross()
-			pd.reset()
-			d.reset()
-
+		# if [i > 75 for i in raw].count(True) > 6:
+		# 	d.lr(1.2, 1.2, 5)
+		# 	pd.reset()
+		# 	d.reset()
 
 		# elif green_component_detected[0] or green_component_detected[1]:
 		# 	scan_lr()

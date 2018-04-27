@@ -1,4 +1,4 @@
-from devices import driver as d, ultrasonic_sensor as us, line_sensor_array as lsa
+from devices import driver as d, line_sensor_array as lsa
 from robotspecs import circumference as circ, robot_lenght
 
 sharpturn = circ/4

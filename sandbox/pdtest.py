@@ -1,35 +1,35 @@
-from devices import line_sensor_array as lsa, driver as d, color_sensors as cs, ultrasonic_sensor as us
+from devices import line_sensor_array as lsa, driver as d, color_sensors as cs
+# ultrasonic_sensor as us
 from components.linedataparser import line_data_parser as ldp
 from robotspecs import circumference
 from util.linedatamanipulation import error_from_vector
 from components.pdcontroller import PDController as PD
-from Sandbox.devtools import s, l, run_safe
-from Sandbox.crossings import crossing as cross, scan_lr
+from sandbox.devtools import s, l, run_safe
+from sandbox.crossings import crossing as cross
 from time import sleep
-from Sandbox.evasion_manouver import evade
+from sandbox.evasion_manouver import evade
 
 S = 4
 pd = PD(0.35, 3, 3)
 
-cs[0].Green = [147, 212, 96]
-cs[1].Green = [179, 228, 125]
-
+cs[0].Green = [101, 122, 81]
+cs[1].Green = [93, 123, 64]
 
 def main():
 
-	us.mode = "US-DIST-CM"
+	# us.mode = "US-DIST-CM"
 	c = 0
 	pd.reset()
 	d.reset()
 
 	while 1:
 		sleep(0.0001)
-		if c%5 == 0:
-			if us.value() < 50:
-				evade()
-				pd.reset()
+		if c%4 == 0:
+			# if us.value() < 50:
+			# 	evade()
+			# 	pd.reset()
 			cs_value = [i.values() for i in cs]
-			detected_green = [False not in [abs(x - y) < 30 for x, y in zip(cs[i].Green, cs_value[i])] for i in range(2)]
+			detected_green = [False not in [abs(x - y) < 50 for x, y in zip(cs[i].Green, cs_value[i])] for i in range(2)]
 			if detected_green[0] or detected_green[1]:
 				print("crossing")
 				cross()

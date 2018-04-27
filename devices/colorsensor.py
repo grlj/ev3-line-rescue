@@ -12,4 +12,4 @@ class ColorSensor(ColorSensor):
 		self.Green = self.values()
 
 	def is_green(self):
-		return False not in [abs(x - y) < 10 for x, y in zip(self.Green, self.raw)]
+		return False not in [abs(x - y) < 50 for x, y in zip(self.Green, self.raw)]
